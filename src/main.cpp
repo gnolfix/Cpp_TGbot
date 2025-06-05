@@ -1,11 +1,10 @@
-#include "config.hpp"
-#include <iostream>
+#include "bot_app.hpp"
+#include <tgbot/tgbot.h>
 
 int main()
 {
-    config __cfg = config_loader::load("config.json");
-    std::cout << __cfg._M_admin_id << ", " << __cfg._M_svo_path << ", " << __cfg._M_svo_mime << ", " << __cfg._M_keyboard[0][1] << std::endl;
-
-
-    return 0;
+    _Config __cfg = _Config_loader::load("config.json");
+    _Bot_app app(__cfg);
+    app.run();
+   return 0;
 }

@@ -1,11 +1,11 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -I/usr/local/include
-LIBS = 
+LIBS = /usr/local/lib/libTgBot.a -lboost_system -lssl -lcrypto -lpthread
 
 SRC_DIR = ./src
 BUILD_DIR = build
 
-SOURCES = $(SRC_DIR)/main.cpp $(SRC_DIR)/config.cpp
+SOURCES = $(SRC_DIR)/main.cpp $(SRC_DIR)/config.cpp $(SRC_DIR)/command_router.cpp $(SRC_DIR)/keyboard_router.cpp $(SRC_DIR)/bot_app.cpp
 OBJ = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SOURCES))
 TARGET = $(BUILD_DIR)/TGbot
 
