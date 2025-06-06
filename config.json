@@ -1,14 +1,54 @@
 {
+    "developer_mode": true,
+    "in_file": true,
     "admin_id": 1488,
     "bot_token": "7666192851:AAHm0Yk5jmYh2pwfCzg7NcU_8E4EHiYlA4k",
     "svo_mime": "sdfsdf",
     "svo_path": "dfjkdsf",
-    "keyboard": [["jsdf"], ["asdf"]],
+    "keyboard_user": [["jsdf"], ["asdf"]],
+    "keyboard_admin": [["jsdf"], ["asdf"]],
+    "inline_keyboard":
+    [
+  [
+    {
+      "key1": "value1",
+      "key2": "value2"
+    },
+    {
+      "foo": "bar"
+    }
+  ],
+  [
+    {
+      "another": "example"
+    }
+  ]
+],
     "commands": 
+    [
+    {"masohka": "Не машонка"},
+    {"pidor": "Когдя тебя ебали что на жопе написали?"},
+    {"ads": "Ты вызвал сатану пидор"}
+    ],
+    "command_router": 
     [
     {"masohka": "pizda"},
     {"pidor": "ebat"},
     {"ads": "adfs"}
-    ]
+    ],
+
+
+    "keyboard_fields_user": 
+    {
+        "resize": true,
+        "placeholder": "ZOV"
+    },
+    "keyboard_fields_admin": 
+    {
+        "resize": true,
+        "placeholder": "ZOV"
+    }
+
+
 
 }

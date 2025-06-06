@@ -1,12 +1,12 @@
 #include "command_router.hpp"
 
 void 
-_Command::commands_creator(std::vector<std::map<std::string,std::string>>& __commands, TgBot::Bot& __bot)
+_Command::commands_creator()
 {
     std::vector<TgBot::BotCommand::Ptr> __row;
-    for(size_t i=0;i<__commands.size();++i)
+    for(size_t i=0;i<_M_cfg._M_command_router.size();++i)
     {
-        for(const auto& [command, description] : __commands[i])
+        for(const auto& [command, description] : _M_cfg._M_command_router[i])
         {
             auto __cmd = std::make_shared<TgBot::BotCommand>();
             __cmd->command = command;
@@ -14,6 +14,6 @@ _Command::commands_creator(std::vector<std::map<std::string,std::string>>& __com
             __row.push_back(__cmd);
         }
     }
-    __bot.getApi().setMyCommands(__row);
+    _M_bot.getApi().setMyCommands(__row);
     return;
 }

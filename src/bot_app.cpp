@@ -3,21 +3,13 @@
 int 
 _Bot_app::run()
 {
-    std::map<std::string, std::string> i;
-    _M_command_router.commands_creator(_M_cfg._M_commands, _M_bot);
-    _M_keyboard_router.keyboard_creator(_M_cfg._M_keyboard,  _M_kb);
-    
-    _M_bot.getEvents().onCommand("start", [this](TgBot::Message::Ptr message) {
-        _M_bot.getApi().sendMessage(message->chat->id, "Hi!", nullptr, nullptr, _M_kb);
-    });
-    _M_bot.getEvents().onAnyMessage([this](TgBot::Message::Ptr message) {
-        printf("User wrote %s\n", message->text.c_str());
-        if (StringTools::startsWith(message->text, "/start")) {
-            return;
-        }
-        _M_bot.getApi().sendMessage(message->chat->id, "Your message is: " + message->text);
-    });
-    try {
+    _M_command_router.commands_creator();
+    auto __kb = _M_keyboard_router.keyboard_creator(true, false);
+    auto __inline_kb = _M_inline_keyboard_router.inline_keyboard_creator();
+    _M_controller.message_handler();
+    _M_controller.start_handler(__kb, __inline_kb);
+    _M_controller.command_handler(__kb);
+        try {
         printf("Bot username: %s\n", _M_bot.getApi().getMe()->username.c_str());
         TgBot::TgLongPoll longPoll(_M_bot);
         while (true) {
@@ -30,7 +22,5 @@ _Bot_app::run()
 
     return 0;
 }
-
-
 
 
